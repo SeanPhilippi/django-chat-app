@@ -1,4 +1,5 @@
 from django.contrib.auth import login
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from .forms import SignUpForm
@@ -18,7 +19,7 @@ def signup(request):
             login(request, user)
 
             return redirect('frontpage')
-        else:
-            form = SignUpForm()
+    else:
+        form = SignUpForm()
 
-        return render(request, 'core/signup.html', {'form': form})
+    return render(request, 'core/signup.html', {'form': form})
